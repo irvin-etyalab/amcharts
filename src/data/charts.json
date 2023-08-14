@@ -1,0 +1,240 @@
+{
+  "line": {
+    "type": "XYChart",
+    "data": [{
+    "country": "Lithuania",
+    "value": 501
+  }, {
+    "country": "Czechia",
+    "value": 301
+  }, {
+    "country": "Ireland",
+    "value": 201
+  }, {
+    "country": "Germany",
+    "value": 165
+  }, {
+    "country": "Australia",
+    "value": 139
+  }, {
+    "country": "Austria",
+    "value": 128
+  }, {
+    "country": "UK",
+    "value": 99
+  }, {
+    "country": "Belgium",
+    "value": 60
+  }, {
+    "country": "The Netherlands",
+    "value": 50
+  }],
+    "xAxes": [{
+      "type": "CategoryAxis",
+      "dataFields": {
+        "category": "country"
+      },
+      "title": {
+        "text": "Date"
+      },
+      "renderer": {
+        "polyspline": {
+          "tensionX": 0.0
+        }
+      }
+    }],
+    "yAxes": [{
+      "type": "ValueAxis",
+      "title": {
+        "text": "Values"
+      }
+    }],
+    "series": [{
+      "type": "LineSeries",
+      "dataFields": {
+        "categoryX": "country",
+        "valueY": "value"
+      },
+      "strokeDasharray": "3,3",
+      "strokeWidth": 3,
+      "fillOpacity": 0.2,
+      "tooltipText": "{categoryX}: {valueY.value}",
+      "filters": [{
+        "type": "DropShadowFilter",
+        "opacity": 0.2,
+        "blur": 5,
+        "color": "#000"
+      }]
+    }],
+    "cursor": {
+      "type": "XYCursor"
+    }
+  },
+  "bar": {
+    "type": "XYChart",
+    "data": [{
+      "category": "Category 1",
+      "value": 10
+    }, {
+      "category": "Category 2",
+      "value": 25
+    }, {
+      "category": "Category 3",
+      "value": 15
+    }],
+    "yAxes": [{
+      "type": "CategoryAxis",
+      "dataFields": {
+        "category": "category"
+      },
+      "title": {
+        "text": "Categories"
+      }
+    }],
+    "xAxes": [{
+      "type": "ValueAxis",
+      "title": {
+        "text": "Values"
+      }
+    }],
+    "series": [{
+      "type": "ColumnSeries",
+      "dataFields": {
+        "categoryY": "category",
+        "valueX": "value"
+      },
+      "columns": {
+        "tooltipText": "{valueX.value}",
+        "strokeWidth": 0,
+        "cornerRadiusTop": 5
+      },
+      "sequencedInterpolation": true,
+      "defaultState": {
+        "transitionDuration": 1000
+      },
+      "columnsTemplate": {
+        "column": {
+          "propertyFields": {
+            "fill": "color"
+          },
+          "tooltipText": "{categoryY}: {valueX.value}"
+        }
+      }
+    }]
+  },
+  "column": {
+    "type": "XYChart",
+    "data": [{
+      "category": "Category 1",
+      "value": 10
+    }, {
+      "category": "Category 2",
+      "value": 25
+    }, {
+      "category": "Category 3",
+      "value": 15
+    }],
+    "xAxes": [{
+      "type": "CategoryAxis",
+      "dataFields": {
+        "category": "category"
+      },
+      "title": {
+        "text": "Categories"
+      }
+    }],
+    "yAxes": [{
+      "type": "ValueAxis",
+      "title": {
+        "text": "Values"
+      }
+    }],
+    "series": [{
+      "type": "ColumnSeries",
+      "dataFields": {
+        "categoryX": "category",
+        "valueY": "value"
+      },
+      "columns": {
+        "tooltipText": "{valueY.value}",
+        "strokeWidth": 0,
+        "cornerRadiusTop": 5
+      },
+      "sequencedInterpolation": true,
+      "defaultState": {
+        "transitionDuration": 1000
+      },
+      "columnsTemplate": {
+        "column": {
+          "propertyFields": {
+            "fill": "color"
+          },
+          "tooltipText": "{categoryX}: {valueY.value}"
+        }
+      }
+    }]
+  },
+  "pie": {
+    "type": "PieChart",
+    "data": [{
+      "category": "Category 1",
+      "value": 10
+    }, {
+      "category": "Category 2",
+      "value": 25
+    }, {
+      "category": "Category 3",
+      "value": 15
+    }],
+    "series": [{
+      "type": "PieSeries",
+      "dataFields": {
+        "category": "category",
+        "value": "value"
+      },
+      "slices": {
+        "tooltipText": "{category}: {value.value}"
+      },
+      "labels": {
+        "disabled": true
+      },
+      "ticks": {
+        "disabled": true
+      },
+      "alignLabels": false
+    }]
+  },
+  "donut" : {
+    "type": "PieChart",
+    "innerRadius": "40%",
+    "data": [{
+      "category": "Category 1",
+      "value": 30
+    }, {
+      "category": "Category 2",
+      "value": 45
+    }, {
+      "category": "Category 3",
+      "value": 25
+    }],
+    "series": [{
+      "type": "PieSeries",
+      "dataFields": {
+        "category": "category",
+        "value": "value"
+      },
+      "slices": {
+        "stroke": "#fff",
+        "strokeWidth": 2
+      },
+      "hiddenState": {
+        "properties": {
+          "opacity": 0.5
+        }
+      },
+      "tooltip": {
+        "text": "{category}: {value}"
+      }
+    }]
+  }
+}
