@@ -178,13 +178,16 @@
     "type": "PieChart",
     "data": [{
       "category": "Category 1",
-      "value": 10
+      "value": 10,
+      "color": "#0000FF"
     }, {
       "category": "Category 2",
-      "value": 25
+      "value": 25,
+      "color": "#00FF00"
     }, {
       "category": "Category 3",
-      "value": 15
+      "value": 15,
+      "color": "#00FFFF"
     }],
     "series": [{
       "type": "PieSeries",
@@ -193,7 +196,13 @@
         "value": "value"
       },
       "slices": {
-        "tooltipText": "{category}: {value.value}"
+        "tooltipText": "{category}: {value.value}",
+        "stroke": "#ffffff",
+        "strokeWidth": 1,
+        "strokeOpacity": 0,
+        "propertyFields": {
+          "fill": "color"
+        }
       },
       "labels": {
         "disabled": true
@@ -234,6 +243,195 @@
       },
       "tooltip": {
         "text": "{category}: {value}"
+      }
+    }]
+  },
+  "mixed-bar": {
+    "type": "XYChart",
+    "data": [
+      { "category": "January", "columnValue": 50, "lineValue": 20 },
+      { "category": "February", "columnValue": 30, "lineValue": 40 },
+      { "category": "March", "columnValue": 45, "lineValue": 35 },
+      { "category": "April", "columnValue": 60, "lineValue": 25 }
+    ],
+    "xAxes": [
+      {
+        "type": "CategoryAxis",
+        "dataFields": {
+          "category": "category"
+        }
+      }
+    ],
+    "yAxes": [
+      {
+        "type": "ValueAxis"
+      }
+    ],
+    "series": [
+      {
+        "type": "ColumnSeries",
+        "dataFields": {
+          "categoryX": "category",
+          "valueY": "columnValue"
+        }
+      },
+      {
+        "type": "LineSeries",
+        "dataFields": {
+          "categoryX": "category",
+          "valueY": "lineValue"
+        },
+        "strokeDasharray": "3,3",
+        "strokeWidth": 3,
+        "fillOpacity": 0.2,
+        "tooltipText": "{categoryX}: {valueY.value}",
+        "filters": [{
+          "type": "DropShadowFilter",
+          "opacity": 0.2,
+          "blur": 5,
+          "color": "#000"
+        }]
+      }
+    ],
+    "cursor": {
+      "type": "XYCursor"
+    }
+  },
+  "mixed-pie": {
+    "type": "XYChart",
+    "data": [{
+      "country": "Lithuania",
+      "units": 500,
+      "color": "#0000FF",
+      "pie": [{
+        "value": 250,
+        "title": "Cat #1"
+      }, {
+        "value": 150,
+        "title": "Cat #2"
+      }, {
+        "value": 100,
+        "title": "Cat #3"
+      }]
+    }, {
+      "country": "Czech Republic",
+      "units": 300,
+      "pie": [{
+        "value": 80,
+        "title": "Cat #1"
+      }, {
+        "value": 130,
+        "title": "Cat #2"
+      }, {
+        "value": 90,
+        "title": "Cat #3"
+      }]
+    }, {
+      "country": "Ireland",
+      "units": 200,
+      "pie": [{
+        "value": 75,
+        "title": "Cat #1"
+      }, {
+        "value": 55,
+        "title": "Cat #2"
+      }, {
+        "value": 70,
+        "title": "Cat #3"
+      }]
+    }],
+  
+    "hiddenState": {
+      "properties": {
+        "opacity": 0
+      }
+    },
+  
+    "xAxes": [{
+      "type": "CategoryAxis",
+      "dataFields": {
+        "category": "country"
+      },
+      "renderer": {
+        "grid": {
+          "disabled": true
+        }
+      }
+    }],
+  
+    "yAxes": [{
+      "type": "ValueAxis",
+      "title": {
+        "text": "Units sold (M)"
+      },
+      "min": 0,
+      "renderer": {
+        "baseGrid": {
+          "disabled": true
+        },
+        "grid": {
+          "strokeOpacity": 0.07
+        }
+      }
+    }],
+  
+    "series": [{
+      "type": "ColumnSeries",
+      "dataFields": {
+        "valueY": "units",
+        "categoryX": "country"
+      },
+      "tooltip": {
+        "pointerOrientation": "vertical"
+      },
+      "columns": {
+        "propertyFields": {
+          "fill": "color",
+          "stroke": "color"
+        },
+        "column": {
+          "tooltipText": "Series: {name}\nCategory: {categoryX}\nValue: {valueY}",
+          "tooltipY": 0,
+          "cornerRadiusTopLeft": 20,
+          "cornerRadiusTopRight": 20
+        },
+        "strokeOpacity": 0,
+  
+        "children": [{
+          "type": "PieChart",
+          "forceCreate": true,
+          "width": "80%",
+          "height": "80%",
+          "align": "center",
+          "valign": "middle",
+          "dataFields": {
+            "data": "pie"
+          },
+          "series": [{
+            "type": "PieSeries",
+            "dataFields": {
+              "value": "value",
+              "category": "title"
+            },
+            "labels": {
+              "disabled": true
+            },
+            "ticks": {
+              "disabled": true
+            },
+            "slices": {
+              "stroke": "#ffffff",
+              "strokeWidth": 1,
+              "strokeOpacity": 0
+            },
+            "hiddenState": {
+              "properties": {
+                "startAngle": -90,
+                "endAngle": 270
+              }
+            }
+          }]
+        }]
       }
     }]
   }

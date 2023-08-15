@@ -6,6 +6,8 @@
       <option value="column">Column</option>
       <option value="pie">Pie</option>
       <option value="donut">Donut</option>
+      <option value="mixed-bar">Mixed (Bar)</option>
+      <option value="mixed-pie">Mixed (Pie)</option>
     </select>
     <custom-chart :config="config" />
     <v-jsoneditor v-if="config" v-model="config" height="300px" />

@@ -44,7 +44,7 @@ export default {
 
 <style scoped>
   #chartDiv {
-    width: 50%;
+    width: 100%;
     height: 400px;
   }
 </style>
